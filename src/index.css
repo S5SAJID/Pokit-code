@@ -5,9 +5,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: "JetBrains Mono", source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.bg-indigo {
+  background-color: var(--bs-indigo);
+}
+
+.text-indigo {
+  color: var(--bs-indigo);
+}
+
+.vh-no {
+  height: calc(100vh - 3.5rem);
 }
