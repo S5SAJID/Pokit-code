@@ -4,8 +4,7 @@ import Navbar from './components/comp/Navbar';
 
 function App() {
   return (
-    <div className="w-100 overflow-hidden">
-      <Navbar title="Pokit" />
+    <div className="overflow-hidden">
       <EditorPage />
     </div>
   );
