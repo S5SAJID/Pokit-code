@@ -1,5 +1,6 @@
 import Editor from '../comp/Editor';
 import Navbar from '../comp/Navbar';
+import {  } from '@uiw/react-codemirror'
 
 export default function EditorPage() {
   let data = {
