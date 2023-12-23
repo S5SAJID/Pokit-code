@@ -12,9 +12,7 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Pokit</title>
-    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/highlihgt.default.min.css">
     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/remixicon.css">
-    <link rel="stylesheet" href="%PUBLIC_URL%/assets/js/code-input.min.css">
     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap.min.css">
   </head>
   <body>
@@ -22,19 +20,5 @@
     <div id="root"></div>
 
     <script src="%PUBLIC_URL%/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/highlight.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/code-input.min.js"></script>
-    <script src="%PUBLIC_URL%/assets/js/plugins/indent.js"></script>
-    <script>
-
-      codeInput.registerTemplate("syntax-highlighted", 
-      codeInput.templates.hljs(
-          hljs, 
-          [
-              new codeInput.plugins.Indent(),
-        ]
-      )
-    );
-    </script>
   </body>
 </html>

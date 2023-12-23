@@ -1,11 +1,12 @@
 import React from 'react'
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
+import Navbar from '../comp/Navbar'
+import {Link} from 'react-router-dom'
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className='p-5 m-5'>
-        <CodeMirror lang={javascript}/>
+    <div className='w-100 vh-100 bg-dark'>
+      <Navbar title="Pokit" project="Home"/>
+      <Link to="/editor" className="btn btn-primary">Go to editor</Link>
     </div>
   )
 }

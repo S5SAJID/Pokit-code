@@ -1,36 +1,25 @@
 import Editor from '../comp/Editor';
 import Navbar from '../comp/Navbar';
+import React from 'react';
 
 export default function EditorPage() {
-  let data = {
-    'html': "",
-    'css': "",
-    "js": "",
-  }
+  const [jsCode, setJsCode] = React.useState("console.log('hello world!');");
+  const [htmlCode, sethtmlCode] = React.useState("console.log('hello world!');");
+  const [cssCode, setCssCode] = React.useState("console.log('hello world!');");
 
-  const onHtmlChange = (e) => {
-    document.querySelector("iframe").contentDocument.body.innerHTML = e.target.value;
-    data['html'] = e.target.value;
-  };
-
-  const onCssChange = (e) => {
-    document.querySelector("iframe").contentDocument.head.innerHTML = "<style>" + e.target.value + "</style>";
-    data['css'] = e.target.value;
-  };
-
-  const onJsChange = (e) => {
-    try {
-        document.querySelector("iframe").contentWindow.eval(e.target.value)
-        data['js'] = e.target.value;
-        document.querySelector(".error-wraper").classList.add("d-none");
-        document.querySelector(".error-shower").innerHTML = "";
-    } catch (error) {
-        console.log(error.message);
-        document.querySelector(".error-wraper").classList.remove("d-none");
-        document.querySelector(".error-shower").innerHTML = error.message;  
-        data['js'] = e.target.value;
-    }
-  };
+  // const onJsChange = (e) => {
+  //   try {
+  //       document.querySelector("iframe").contentWindow.eval(e.target.value)
+  //       data['js'] = e.target.value;
+  //       document.querySelector(".error-wraper").classList.add("d-none");
+  //       document.querySelector(".error-shower").innerHTML = "";
+  //   } catch (error) {
+  //       console.log(error.message);
+  //       document.querySelector(".error-wraper").classList.remove("d-none");
+  //       document.querySelector(".error-shower").innerHTML = error.message;  
+  //       data['js'] = e.target.value;
+  //   }
+  // };
 
   const downloadHtml = () => {
     let newFileData = `<!DOCTYPE html>
@@ -39,14 +28,13 @@ export default function EditorPage() {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Pokit</title>
-        <style>${data['css']}</style>
+        <style>${cssCode}</style>
     </head>
     <body>
-    ${data['html']}
+    ${htmlCode}
     </body>
-    <script>${data['js']}</script>
+    <script>${jsCode}</script>
     </html>`;
-
 
     let blob = new Blob([newFileData]);
     let url = URL.createObjectURL(blob);
@@ -55,26 +43,51 @@ export default function EditorPage() {
     link.download = 'pokit.html';
     link.click();
     link.remove();
-    console.log(data);
   }
 
-  let copyCode = (type) => {
-    if (data[type].length !== 0) {
-      navigator.clipboard.writeText(data[type]);
-    } else {
-      let alertEle = document.createElement("div");
-      alertEle.className = 'alert alert-warning alert-dismissible fade show position-absolute';
-      alertEle.role = 'alert';
-      alertEle.style.bottom = '1.5rem';
-      alertEle.style.left = '1.5rem';
-      alertEle.innerHTML = 'Cant copy empty ' + type.toUpperCase()+ ' code!' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-      document.body.appendChild(alertEle);
-      setTimeout(() => {
-        alertEle.classList.remove("show");
-        alertEle.remove();
-      }, 1600);
+  // let copyCode = (type) => {
+  //   if (data[type].length !== 0) {
+  //     navigator.clipboard.writeText(data[type]);
+  //   } else {
+  //     let alertEle = document.createElement("div");
+  //     alertEle.className = 'alert alert-warning alert-dismissible fade show position-absolute';
+  //     alertEle.role = 'alert';
+  //     alertEle.style.bottom = '1.5rem';
+  //     alertEle.style.left = '1.5rem';
+  //     alertEle.innerHTML = 'Cant copy empty ' + type.toUpperCase()+ ' code!' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+  //     document.body.appendChild(alertEle);
+  //     setTimeout(() => {
+  //       alertEle.classList.remove("show");
+  //       alertEle.remove();
+  //     }, 1600);
+  //   }
+  // }
+
+  const copyCode = () => {}
+
+  const onHtmlChange = React.useCallback((val) => {
+    document.querySelector('iframe').contentDocument.body.innerHTML = val;
+    sethtmlCode(val);
+  }, []);
+
+  const onCssChange = React.useCallback((val) => {
+    document.querySelector('iframe').contentDocument.head.innerHTML = "<style>" + val + "</style>";
+    setCssCode(val);
+  }, []);
+
+  const onJsChange = React.useCallback((val) => {
+    try {
+        setJsCode(val);
+        document.querySelector("iframe").contentWindow.eval(val)
+        document.querySelector(".error-wraper").classList.add("d-none");
+        document.querySelector(".error-shower").innerHTML = "";
+    } catch (error) {
+        setJsCode(val);
+        console.log(error.message);
+        document.querySelector(".error-wraper").classList.remove("d-none");
+        document.querySelector(".error-shower").innerHTML = error.message;  
     }
-  }
+  }, []);
 
   return (
     <div className='vh-100'>
@@ -84,6 +97,14 @@ export default function EditorPage() {
               <Editor onChange={onHtmlChange} onCopyBtn={copyCode} type="HTML" icon="ri-html5-line"/>
               <Editor onChange={onCssChange} onCopyBtn={copyCode} type="CSS" icon="ri-css3-line"/>
               <Editor onChange={onJsChange} onCopyBtn={copyCode} type="JS" icon="ri-javascript-line"/>
+              
+              <div className='error-wraper d-none rounded p-3 bg-danger-subtle'>
+                <p className='text-danger m-0 fw-semibold'>Error</p>
+                <p className="border-danger">
+                  <code className="error-shower"></code>
+                </p>
+              </div>
+
           </div>
           <div className="ms-2 preview bg-light w-100 rounded-4">
               <iframe title='Preview' className='w-100 h-100'></iframe>
