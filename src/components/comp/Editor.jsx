@@ -13,8 +13,9 @@ export default function Editor({type, onChange, onCopyBtn}) {
 
     function title(title, icon) {
       return (
-          <div className='d-flex rounded-top align-items-center border-0 p-0 px-2 bg-secondary text-light justify-content-between'>
+          <div className='d-flex p-1 rounded-top align-items-center border-0 p-0 px-2 bg-secondary text-light justify-content-between'>
             <p className='m-0'><i className={icon} /> {title}</p>
+            <button className="btn btn-sm py-0 px-1 btn-dark" onClick={() => onCopyBtn(type)}><i className='ri-clipboard-line'/></button>
           </div>
       );
     }
@@ -25,7 +26,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("HTML", "ri-html5-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[html()]} height='200px' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[html()]} minHeight='200px' maxHeight='300px' onChange={onChange}/>
             </div>
           )
           break;
@@ -34,7 +35,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("CSS", "ri-css3-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[css()]} height='200px' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[css()]} minHeight='200px' maxHeight='300px' onChange={onChange}/>
             </div>
           )
           break;
@@ -42,7 +43,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("JavaScript", "ri-javascript-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[javascript()]} height='200px' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[javascript()]} minHeight='200px' maxHeight='300px' onChange={onChange}/>
             </div>
           )
           break;

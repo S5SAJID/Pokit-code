@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <div className='w-100 vh-100 bg-dark'>
       <Navbar title="Pokit" project="Home"/>
-      <Link to="/editor" className="btn btn-primary">Go to editor</Link>
+      <Link to="/editor" className="btn btn-primary m-5">Go to editor</Link>
     </div>
   )
 }

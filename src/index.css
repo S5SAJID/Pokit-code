@@ -34,3 +34,7 @@ code {
   background: #fff5;
   border-radius: 10px;
 }
+
+.editor {
+  height: 100%;
+}

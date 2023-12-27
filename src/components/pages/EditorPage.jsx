@@ -7,20 +7,6 @@ export default function EditorPage() {
   const [htmlCode, sethtmlCode] = React.useState("console.log('hello world!');");
   const [cssCode, setCssCode] = React.useState("console.log('hello world!');");
 
-  // const onJsChange = (e) => {
-  //   try {
-  //       document.querySelector("iframe").contentWindow.eval(e.target.value)
-  //       data['js'] = e.target.value;
-  //       document.querySelector(".error-wraper").classList.add("d-none");
-  //       document.querySelector(".error-shower").innerHTML = "";
-  //   } catch (error) {
-  //       console.log(error.message);
-  //       document.querySelector(".error-wraper").classList.remove("d-none");
-  //       document.querySelector(".error-shower").innerHTML = error.message;  
-  //       data['js'] = e.target.value;
-  //   }
-  // };
-
   const downloadHtml = () => {
     let newFileData = `<!DOCTYPE html>
     <html lang="en">
@@ -45,25 +31,26 @@ export default function EditorPage() {
     link.remove();
   }
 
-  // let copyCode = (type) => {
-  //   if (data[type].length !== 0) {
-  //     navigator.clipboard.writeText(data[type]);
-  //   } else {
-  //     let alertEle = document.createElement("div");
-  //     alertEle.className = 'alert alert-warning alert-dismissible fade show position-absolute';
-  //     alertEle.role = 'alert';
-  //     alertEle.style.bottom = '1.5rem';
-  //     alertEle.style.left = '1.5rem';
-  //     alertEle.innerHTML = 'Cant copy empty ' + type.toUpperCase()+ ' code!' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
-  //     document.body.appendChild(alertEle);
-  //     setTimeout(() => {
-  //       alertEle.classList.remove("show");
-  //       alertEle.remove();
-  //     }, 1600);
-  //   }
-  // }
+  let copyCode = (type) => {
+    let code = type === 'HTML' ? htmlCode : type === 'CSS' ? cssCode: type === "JS" ? jsCode: null;
 
-  const copyCode = () => {}
+    if (code.length !== 0) {
+      navigator.clipboard.writeText(code);
+    } else {
+      let alertEle = document.createElement("div");
+      alertEle.className = 'alert alert-warning alert-dismissible fade show position-absolute';
+      alertEle.role = 'alert';
+      alertEle.style.bottom = '1.5rem';
+      alertEle.style.left = '1.5rem';
+      alertEle.innerHTML = 'Cant copy empty ' + type.toUpperCase()+ ' code!' + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+      document.body.appendChild(alertEle);
+      setTimeout(() => {
+        alertEle.classList.remove("show");
+        alertEle.remove();
+      }, 1600);
+    }
+  }
+
 
   const onHtmlChange = React.useCallback((val) => {
     document.querySelector('iframe').contentDocument.body.innerHTML = val;
@@ -78,9 +65,16 @@ export default function EditorPage() {
   const onJsChange = React.useCallback((val) => {
     try {
         setJsCode(val);
-        document.querySelector("iframe").contentWindow.eval(val)
+        let result = document.querySelector("iframe").contentWindow.eval(val)
         document.querySelector(".error-wraper").classList.add("d-none");
         document.querySelector(".error-shower").innerHTML = "";
+        if (result !== undefined) {
+          document.querySelector(".msg-wraper").classList.remove("d-none");
+          document.querySelector(".msg-shower").innerHTML = result;
+        } else {
+          document.querySelector(".msg-wraper").classList.add("d-none");
+          document.querySelector(".msg-shower").innerHTML = "";
+        }
     } catch (error) {
         setJsCode(val);
         console.log(error.message);
@@ -102,6 +96,13 @@ export default function EditorPage() {
                 <p className='text-danger m-0 fw-semibold'>Error</p>
                 <p className="border-danger">
                   <code className="error-shower"></code>
+                </p>
+              </div>
+
+              <div className='msg-wraper d-none rounded p-3 mt-3 bg-info-subtle'>
+                <p className='text-dark m-0 fw-semibold'>Console</p>
+                <p className="border-danger">
+                  <code className="msg-shower text-dark"></code>
                 </p>
               </div>
 
