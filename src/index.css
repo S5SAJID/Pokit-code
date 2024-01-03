@@ -38,3 +38,57 @@ code {
 .editor {
   height: 100%;
 }
+
+.bg-black {
+  background: #111;
+}
+
+.new_button_outer{
+  background-image: linear-gradient(90deg,#842cd7,#21f5f1);
+  border-radius: 8px;
+  padding: 1px;
+  box-shadow: 0 20px 40px rgba(132,44,215,.3);
+}
+
+a.new_button_outer {
+  color: var(--gray-1);
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.new-button-inner {
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  background-color: var(--new_black_bg);
+  border-radius: 8px;
+  padding-left: 6px;
+  padding-right: 16px;
+  transition: background-color .2s;
+  display: flex;
+  background: #111e;
+}
+
+.new_button_text.inner {
+  background-color: transparent;
+  transition: opacity .2s;
+}
+.new_button_text.bigger {
+  font-size: 16px;
+}
+.new_button_text {
+  background-color: var(--new_black_bg);
+  color: #fff;
+  margin-bottom: 0;
+  padding: 16px 10px;
+  font-size: 13px;
+  line-height: 16px;
+}
+.new_bg {
+  background-color: #060606;
+  font-family: Inter,sans-serif;
+  font-weight: 500;
+}
+.new-button-inner:hover {
+  background-color: rgba(13,15,16,.8);
+}
