@@ -26,7 +26,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("HTML", "ri-html5-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[html()]} minHeight='200px' maxHeight='300px' onChange={onChange}/>
+                <CodeMirror basicSetup={{autocompletion: true}} className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[html()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
             </div>
           )
           break;
@@ -35,7 +35,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("CSS", "ri-css3-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[css()]} minHeight='200px' maxHeight='300px' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[css()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
             </div>
           )
           break;
@@ -43,7 +43,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("JavaScript", "ri-javascript-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[javascript()]} minHeight='200px' maxHeight='300px' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[javascript()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
             </div>
           )
           break;

@@ -87,7 +87,7 @@ export default function EditorPage() {
     <div className='vh-100'>
       <Navbar title="Pokit" project="Simple Project"/>
       <div className='d-flex bg-dark vh-no p-2'>
-        <div className="editors d-flex flex-column h-100 px-2" style={{width: '24rem'}}>
+        <div className="editors h-100 px-2" style={{width: '24rem'}}>
               <Editor onChange={onHtmlChange} onCopyBtn={copyCode} type="HTML" icon="ri-html5-line"/>
               <Editor onChange={onCssChange} onCopyBtn={copyCode} type="CSS" icon="ri-css3-line"/>
               <Editor onChange={onJsChange} onCopyBtn={copyCode} type="JS" icon="ri-javascript-line"/>

@@ -39,6 +39,20 @@ code {
   height: 100%;
 }
 
+.editors {
+  overflow-y: scroll;
+}
+
+.editors::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.editors::-webkit-scrollbar-thumb {
+  background: #fff5;
+  border-radius: 10px;
+}
+
 .bg-black {
   background: #111;
 }
@@ -91,4 +105,49 @@ a.new_button_outer {
 }
 .new-button-inner:hover {
   background-color: rgba(13,15,16,.8);
+}
+
+.gradient-text {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  text-shadow: 0 0 4px #fffa;
+}
+
+
+a.navbar-brand {
+  opacity: .5;
+  transition: all .2s ease-in-out;
+}
+
+a.navbar-brand:hover {
+  opacity: 1;
+  letter-spacing: 1.2px;
+}
+
+.gradient-text::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: cyan;
+  filter: blur(56px);
+  z-index: -1;
+  bottom: -4rem;
+  right: 2rem;
+  /*right: 0px; */
+}
+
+.gradient-text::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: rgb(0, 145, 255);
+  filter: blur(50px);
+  z-index: -1;
+  bottom: 0px;
+  right: -5rem;
+  /*right: 0px; */
 }
