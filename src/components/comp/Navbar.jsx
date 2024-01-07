@@ -5,7 +5,7 @@ export default function Navbar({title, project}) {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
     <div className="container-fluid">
-      <Link className="navbar-brand opacity-50" to="/">{title} <span class="badge text-info-emphasis bg-info-subtle rounded-pill">Construction</span>
+      <Link className="navbar-brand opacity-50" to="/">{title} <span className="badge text-info-emphasis bg-info-subtle rounded-pill">Construction</span>
     </Link>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>

@@ -3,10 +3,13 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import { html } from '@codemirror/lang-html'
 import { css } from '@codemirror/lang-css'
+import { tokyoNight } from '@uiw/codemirror-theme-tokyo-night'
+import { color } from '@uiw/codemirror-extensions-color'
 
 export default function Editor({type, onChange, onCopyBtn}) {
+
   return (
-      <div className='mb-2'>
+      <div className='mb-2 main-editor'>
         {editorEle(type)}
       </div>
     )
@@ -26,7 +29,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("HTML", "ri-html5-line")}
-                <CodeMirror basicSetup={{autocompletion: true}} className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[html()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
+                <CodeMirror basicSetup={{autocompletion: true}} className='editor rounded-bottom overflow-hidden'  theme={tokyoNight} title={type} extensions={[html(), color]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
             </div>
           )
           break;
@@ -35,7 +38,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("CSS", "ri-css3-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[css()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={tokyoNight} title={type} extensions={[css(), color]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
             </div>
           )
           break;
@@ -43,7 +46,7 @@ export default function Editor({type, onChange, onCopyBtn}) {
           return (
             <div>
                 {title("JavaScript", "ri-javascript-line")}
-                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={'dark'} title={type} extensions={[javascript()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
+                <CodeMirror className='editor rounded-bottom overflow-hidden' theme={tokyoNight} title={type} extensions={[javascript()]} minHeight='200px' maxHeight='40vh' onChange={onChange}/>
             </div>
           )
           break;

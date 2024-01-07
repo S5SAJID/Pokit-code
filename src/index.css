@@ -151,3 +151,8 @@ a.navbar-brand:hover {
   right: -5rem;
   /*right: 0px; */
 }
+
+.main-editor {
+  border: 1.8px solid #fff4 !important;
+  border-radius: 7px;
+}
