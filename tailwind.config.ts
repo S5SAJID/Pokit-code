@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        light: "#fdfdfd",
+        dark: "#131313"
+      },
+      fontFamily: {
+        'space': "Space Grotesk",
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
