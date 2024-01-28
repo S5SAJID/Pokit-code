@@ -12,6 +12,7 @@
     "@codemirror/lang-css": "^6.2.1",
     "@codemirror/lang-html": "^6.4.7",
     "@codemirror/lang-javascript": "^6.2.1",
+    "@ducanh2912/next-pwa": "^10.2.2",
     "@uiw/codemirror-theme-tokyo-night": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@vercel/analytics": "^1.1.2",
