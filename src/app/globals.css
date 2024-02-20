@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 body {
-    cursor: url('/figma-cursor.png'), auto;
+    cursor: url('/cursors/Default-d4dfdd23.svg'), auto;
+}
+
+a, button {
+    cursor: url('/cursors/Pointer-2a769ff1.svg'), auto;
 }
 
 ::-webkit-scrollbar {
