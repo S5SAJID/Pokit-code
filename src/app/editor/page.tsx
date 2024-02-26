@@ -67,8 +67,9 @@ export default function EditorPage() {
         let blob = new Blob([newFileData]);
         let url = URL.createObjectURL(blob);
         let link = document.createElement("a");
+        let fileName = prompt("Enter file html filename without .html to download.\n for example: index")
         link.href = url;
-        link.download = 'pokit.html';
+        link.download = `${fileName}.html`;
         link.click();
         link.remove();
       }

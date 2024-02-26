@@ -38,8 +38,8 @@ export default function CodeEditor({lang, value, onChange}: {lang: string, value
         <div className='bg-slate-800 px-3 flex items-center justify-between text-light py-1 absolute top-0 w-full z-10'>
           <div className="editor_title leading-[0]">{lang}</div>
           <div className="editor_actions flex gap-1">
-            <button className="p-1 block m-0 rounded text-light/50 hover:text-light/80 hover:bg-light/20" onClick={copyCode}><icons.copyIcon className="h-4 w-4" /></button>
-            {lang == 'HTML' ? <button className="p-1 block m-0 rounded text-light/50 hover:text-light/80 hover:bg-light/20"><icons.plusIcon className="h-4 w-4" /></button> : null}
+            <button className="p-1 block m-0 rounded text-light/50 hover:text-light/80 hover:bg-light/20" onClick={copyCode} title={`Copy ${lang} code`}><icons.copyIcon className="h-4 w-4" /></button>
+            {/* {lang == 'HTML' ? <button className="p-1 block m-0 rounded text-light/50 hover:text-light/80 hover:bg-light/20"><icons.plusIcon className="h-4 w-4" /></button> : null} */}
           </div>
         </div>
         <CodeApparetment onChange={(e) => onChange(e)} value={value} extensions={[langExtention]} theme={tokyoNight} minHeight='100%' maxHeight='100%'  className='h-full text-base pt-8'/>
