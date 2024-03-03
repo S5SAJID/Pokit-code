@@ -18,3 +18,17 @@ a, button {
 ::-webkit-scrollbar-thumb {
     @apply bg-light/20 rounded-full;
 }
+
+.error_container.error{
+    @apply bg-red-500/10 border-red-400;
+} 
+.error_container.error h4{
+    @apply text-red-200;
+} 
+.error_container.info h4{
+    @apply text-cyan-200;
+} 
+
+.error_container.info{
+    @apply bg-cyan-500/10 border-cyan-400;
+} 

@@ -28,11 +28,29 @@ export default function EditorPage() {
         setCSS(value);
         preViewElement.current.contentDocument.head.innerHTML = `<style>${value}</style>`;
     }
-    
-    const updateJavaScript = (value: string) => {
-        setJavaScript(value);
-        preViewElement.current.contentWindow.eval(value);
-    }
+
+    const updateJavaScript = (value: any) => {
+        try {
+            setJavaScript(value);
+            let result = preViewElement.current.contentWindow.eval(value);
+            document.querySelector(".error_container")!.classList.add("hidden");
+            document.querySelector(".error_container_title")!.innerHTML = "";
+            if (result !== undefined) {
+              document.querySelector(".error_container")!.classList.remove("error");
+              document.querySelector(".error_container")!.classList.add("info");
+              document.querySelector(".error_container")!.classList.remove("hidden");
+              document.querySelector(".error_container_title")!.innerHTML = "Console";
+              document.querySelector(".error_container_desc")!.innerHTML = result;
+            }
+        } catch (error: any) {
+            setJavaScript(value);
+            document.querySelector(".error_container")!.classList.remove("info");
+            document.querySelector(".error_container")!.classList.add("error");
+            document.querySelector(".error_container")!.classList.remove("hidden");
+            document.querySelector(".error_container_title")!.innerHTML = error.name;
+            document.querySelector(".error_container_desc")!.innerHTML = error.message;
+        }
+      };
 
     const wholeCode = {
         'html': {
@@ -67,17 +85,24 @@ export default function EditorPage() {
         let blob = new Blob([newFileData]);
         let url = URL.createObjectURL(blob);
         let link = document.createElement("a");
-        let fileName = prompt("Enter file html filename without .html to download.\n for example: index")
+        let fileName = prompt("Enter file html filename")
+        if (fileName?.includes('.html')) {
+            fileName=fileName.replace(".html","");
+        }
         link.href = url;
         link.download = `${fileName}.html`;
         link.click();
         link.remove();
-      }
+    }
 
     return (
       <main className="w-full h-lvh flex flex-col">
         <Navbar />
         <Editor code={wholeCode} previewRef={preViewElement}/>
+        <div className="error_container hidden absolute w-72 bottom-2 left-2 console border-2 px-1 py-2 text-light rounded">
+            <h4 className='text-md font-semibold error_container_title'></h4>
+            <p className='text-sm font-thin error_container_desc'></p>
+        </div>
         <Footer code={wholeCode} downloadFile={downloadHtml}/>
       </main>
     );

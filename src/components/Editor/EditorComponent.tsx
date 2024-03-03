@@ -46,3 +46,4 @@ export default function CodeEditor({lang, value, onChange}: {lang: string, value
       </div>
     );
 }
+
