@@ -17,6 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta name="google-site-verification" content="CHS0IHVP7qT3o8Zww_AK-zApaf0hvduZGBY9xAQQVZk" />
       <body className='font-space'>
         {children}
         <Analytics />
