@@ -1,0 +1,12 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pokit.vercel.app/</loc>
+    <lastmod>2023-11-12T06:07:46Z</lastmod>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://pokit.vercel.app/editor</loc>
+    <lastmod>2023-11-12T06:07:46Z</lastmod>
+    <priority>0.9</priority>
+  </url>
+</urlset>
