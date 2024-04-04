@@ -5,7 +5,7 @@ import Editor from "@/components/Editor/Editors";
 import Footer from "@/components/Editor/Footer";
 import Navbar from "@/components/Navbar";
 import demoCode from "@/utils/demoCode";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 export default function EditorPage() {
     const [html, setHtml] = useState('<h1>Pokit Code</h1>');

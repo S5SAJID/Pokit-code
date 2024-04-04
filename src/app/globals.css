@@ -32,3 +32,7 @@ a, button {
 .error_container.info{
     @apply bg-cyan-500/10 border-cyan-400;
 } 
+
+.show-preview {
+    @apply !absolute !block;
+}
