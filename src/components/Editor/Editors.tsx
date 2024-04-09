@@ -1,6 +1,5 @@
 "use client";
 import CodeEditor from "./EditorComponent";
-import {useCallback, useRef, useState} from 'react';
 
 export default function Editor({previewRef}: {previewRef:any}) {
     return (
