@@ -12,10 +12,10 @@ export default function Navbar() {
   }
 
     return (
-      <nav className="bg-dark text-light py-5">
+      <nav className="bg-dark text-light-400 py-5">
         <div className="mx-6 flex justify-between items-center">
-            <Link href="/" className="flex items-center gap-2 text-light/90"><Logo showText={false} showConstLable={false}/></Link>
-            <p className="font-semibold">Editor Page Preview</p>
+            <Link href="/" className="flex items-center gap-2 text-light-400/90"><Logo showText={false} showConstLable={false}/></Link>
+            <p className="font-semibold text-light-600">Editor Page Preview</p>
             <div className="actions flex gap-3">
                 <button className="px-3 py-1 rounded-full bg-white/20 hover:bg-white/50 md:hidden" onClick={showPreview}>
                   <Icons.playIcon classname="play-icon" />

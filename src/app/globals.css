@@ -16,7 +16,7 @@ a, button {
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-light/20 rounded-full;
+    @apply bg-white/20 rounded-full;
 }
 
 .error_container.error{

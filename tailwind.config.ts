@@ -9,7 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        light: "#fdfdfd",
+        light: {
+          100: "#ffffff",
+          200: "#fefefe",
+          300: "#fefefe",
+          400: "#fdfdfd",
+          500: "#fdfdfd",
+          600: "#cacaca",
+          700: "#989898",
+          800: "#656565",
+          900: "#333333"
+        },
         dark: "#131313"
       },
       fontFamily: {

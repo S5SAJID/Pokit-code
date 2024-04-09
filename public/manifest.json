@@ -3,7 +3,7 @@
     "name": "Pokit Code - Light & Fast",
     "short_name": "Pokit Code",
     "description": "Pokit code - A simple & fast editor for your simple web code",
-    "theme_color": "#1111111",
+    "theme_color": "#111111",
     "background_color": "#111111",
     "start_url": "/editor",
     "scope": ".",
